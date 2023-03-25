@@ -35,7 +35,7 @@ class ListFragment : Fragment() {
 
         with(binding.rvPersons) {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ListAdapter(sharedViewModel.persons.value ?: listOf())
+            adapter = ListAdapter(sharedViewModel.persons.value?.sorted() ?: listOf())
         }
 
         binding.fabAdd.setOnClickListener {
