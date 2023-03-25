@@ -13,7 +13,12 @@
 
         <action
             android:id="@+id/action_ListFragment_to_DetailsFragment"
-            app:destination="@id/DetailsFragment" />
+            app:destination="@id/DetailsFragment">
+            <argument
+                android:name="personIndex"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </action>
         <action
             android:id="@+id/action_ListFragment_to_addFragment"
             app:destination="@id/AddFragment" />
@@ -27,6 +32,10 @@
         <action
             android:id="@+id/action_DetailsFragment_to_ListFragment"
             app:destination="@id/ListFragment" />
+        <argument
+            android:name="personIndex"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/AddFragment"

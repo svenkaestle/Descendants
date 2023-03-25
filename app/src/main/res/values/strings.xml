@@ -11,4 +11,7 @@
     <string name="til_height_suffix">cm</string>
     <string name="til_type_hint">Type</string>
     <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete</string>
+
+    <string name="date_format">dd.MM.yyyy</string>
 </resources>

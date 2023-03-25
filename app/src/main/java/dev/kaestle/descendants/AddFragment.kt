@@ -54,7 +54,7 @@ class AddFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                 // set the birthday's text value to the selected date as formatted value
-                binding.tilBirthday.editText?.setText(SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY).format(calendar.time))
+                binding.tilBirthday.editText?.setText(SimpleDateFormat(getString(R.string.date_format), Locale.GERMANY).format(calendar.time))
             }
 
             // show the date picker dialog
@@ -91,7 +91,7 @@ class AddFragment : Fragment() {
 
         // add a new person if there was no error and return back to the main fragment
         sharedViewModel.addPerson(
-            birthday = LocalDate.parse(birthday, DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+            birthday = LocalDate.parse(birthday, DateTimeFormatter.ofPattern(getString(R.string.date_format))),
             height = height.toInt(),
             name = name,
             type = PersonType.valueOf(type.uppercase())

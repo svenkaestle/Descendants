@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter
 
 class ListAdapter(private val persons: List<Person>) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
+    var onItemClick: ((Int) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item, parent, false)
@@ -29,10 +31,16 @@ class ListAdapter(private val persons: List<Person>) : RecyclerView.Adapter<List
         holder.tvHeight.text = "${ person.height } cm"
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivAvatar: ImageView = itemView.findViewById(R.id.iv_avatar)
         val tvName: TextView = itemView.findViewById(R.id.tv_name)
         val tvBirthday: TextView = itemView.findViewById(R.id.tv_birthday)
         val tvHeight: TextView = itemView.findViewById(R.id.tv_height)
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(adapterPosition)
+            }
+        }
     }
 }

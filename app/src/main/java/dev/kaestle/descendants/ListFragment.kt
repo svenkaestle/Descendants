@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.kaestle.descendants.adapter.ListAdapter
@@ -34,8 +35,15 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding.rvPersons) {
+            val listAdapter = ListAdapter(sharedViewModel.persons.value?.sorted() ?: listOf())
+            listAdapter.onItemClick = { personIndex ->
+                // navigate to the details fragment and pass the index of the clicked person
+                val action = ListFragmentDirections.actionListFragmentToDetailsFragment(personIndex)
+                view.findNavController().navigate(action)
+            }
+
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ListAdapter(sharedViewModel.persons.value?.sorted() ?: listOf())
+            adapter = listAdapter
         }
 
         binding.fabAdd.setOnClickListener {

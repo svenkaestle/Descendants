@@ -1,10 +1,7 @@
 package dev.kaestle.descendants.utils
 
 import android.util.Log
-import dev.kaestle.descendants.model.Child
-import dev.kaestle.descendants.model.Grandparent
-import dev.kaestle.descendants.model.Parent
-import dev.kaestle.descendants.model.Person
+import dev.kaestle.descendants.model.*
 
 object Utils {
     /**
@@ -28,6 +25,26 @@ object Utils {
                     Log.d("GRANDPARENT", "Name: ${person.name}")
                     Log.d("GRANDPARENT", "Descendants: ${(person as Grandparent).children.size + (person as Grandparent).children.flatMap { child -> child.children }.size}")
                 }
+            }
+        }
+    }
+
+    /**
+     * Returns the [PersonType] for a given [Person].
+     *
+     * @param person A single person to determine the [PersonType]
+     * @return The [PersonType] of the given [Person]
+     */
+    fun getPersonType(person: Person) : PersonType {
+        return when(person) {
+            is Child -> {
+                PersonType.CHILD
+            }
+            is Parent -> {
+                PersonType.PARENT
+            }
+            else -> {
+                PersonType.GRANDPARENT
             }
         }
     }

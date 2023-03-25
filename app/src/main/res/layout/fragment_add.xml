@@ -12,7 +12,6 @@
         android:id="@+id/iv_avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="@dimen/margin_padding_size_small"
 
         android:src="@drawable/ic_launcher_background"
 
@@ -25,7 +24,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_size_small"
+        android:layout_marginTop="@dimen/margin_padding_size_medium"
         app:errorEnabled="true"
 
         android:hint="@string/til_name_hint"
