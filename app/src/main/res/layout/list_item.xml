@@ -25,13 +25,14 @@
         android:layout_marginLeft="@dimen/margin_padding_size_medium"
 
         android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
 
         android:text="Sven"
 
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/iv_avatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar"
         app:layout_constraintBottom_toTopOf="@id/tv_birthday"/>
 
     <TextView
@@ -47,7 +48,7 @@
 
         app:layout_constraintStart_toEndOf="@id/iv_avatar"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
-        app:layout_constraintBottom_toTopOf="@id/tv_height"/>
+        app:layout_constraintBottom_toBottomOf="@id/iv_avatar"/>
 
     <TextView
         android:id="@+id/tv_height"
@@ -60,7 +61,6 @@
 
         android:text="186 cm"
 
-        app:layout_constraintStart_toEndOf="@id/iv_avatar"
-        app:layout_constraintTop_toBottomOf="@id/tv_birthday"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/tv_birthday"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
