@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_ListFragment_to_DetailsFragment"
             app:destination="@id/DetailsFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_addFragment"
+            app:destination="@id/AddFragment" />
     </fragment>
     <fragment
         android:id="@+id/DetailsFragment"
@@ -23,6 +26,15 @@
 
         <action
             android:id="@+id/action_DetailsFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddFragment"
+        android:name="dev.kaestle.descendants.AddFragment"
+        android:label="@string/add_fragment_label"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_ListFragment"
             app:destination="@id/ListFragment" />
     </fragment>
 </navigation>

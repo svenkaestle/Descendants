@@ -7,17 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import dev.kaestle.descendants.adapter.ListAdapter
-import dev.kaestle.descendants.databinding.FragmentListBinding
+import dev.kaestle.descendants.databinding.FragmentAddBinding
 import dev.kaestle.descendants.viewmodel.SharedViewModel
 
 /**
- * The [Fragment] to show all created persons.
+ * The [Fragment] to add a new person.
  */
-class ListFragment : Fragment() {
+class AddFragment : Fragment() {
 
-    private var _binding: FragmentListBinding? = null
+    private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -26,20 +24,15 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentAddBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding.rvPersons) {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = ListAdapter(sharedViewModel.persons.value ?: listOf())
-        }
-
-        binding.fabAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_ListFragment_to_addFragment)
+        binding.btnSave.setOnClickListener {
+            findNavController().navigate(R.id.action_addFragment_to_ListFragment)
         }
     }
 
