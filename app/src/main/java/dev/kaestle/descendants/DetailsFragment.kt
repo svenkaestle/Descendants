@@ -12,7 +12,6 @@ import dev.kaestle.descendants.databinding.FragmentDetailsBinding
 import dev.kaestle.descendants.model.Person
 import dev.kaestle.descendants.utils.Utils
 import dev.kaestle.descendants.viewmodel.SharedViewModel
-import java.time.format.DateTimeFormatter
 
 /**
  * The [Fragment] to show a persons details.
@@ -44,7 +43,10 @@ class DetailsFragment : Fragment() {
         // fill the details form if the current person is not null
         currentPerson?.let {
             binding.tilName.editText?.setText(it.name)
-            binding.tilBirthday.editText?.setText(it.birthday.format(DateTimeFormatter.ofPattern(getString(R.string.date_format))))
+            binding.tilAge.apply {
+                editText?.setText(it.getCurrentAgeInYears().toString())
+                suffixText = if (it.getCurrentAgeInYears() == 1) getString(R.string.year) else getString(R.string.years)
+            }
             binding.tilHeight.editText?.setText(it.height.toString())
             binding.tilType.editText?.setText(Utils.getPersonType(it).value)
         }
