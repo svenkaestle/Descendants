@@ -20,6 +20,7 @@
 
         app:useCompatPadding="true"
         android:src="@drawable/ic_add"
+        app:tint="@color/white"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
