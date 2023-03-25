@@ -28,7 +28,7 @@
         android:layout_marginTop="@dimen/margin_padding_size_small"
         app:errorEnabled="true"
 
-        android:hint="Name"
+        android:hint="@string/til_name_hint"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         app:errorEnabled="true"
         android:clickable="true"
 
-        android:hint="Birthday"
+        android:hint="@string/til_birthday_hint"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,8 @@
         android:layout_height="wrap_content"
         app:errorEnabled="true"
 
-        android:hint="Height"
+        android:hint="@string/til_height_hint"
+        app:suffixText="@string/til_height_suffix"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +90,7 @@
         android:layout_height="wrap_content"
         app:errorEnabled="true"
 
-        android:hint="Type"
+        android:hint="@string/til_type_hint"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Save"
+        android:text="@string/btn_save"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

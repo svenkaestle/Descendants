@@ -26,7 +26,7 @@ class ListAdapter(private val persons: List<Person>) : RecyclerView.Adapter<List
         holder.ivAvatar.setImageResource(R.drawable.ic_launcher_background)
         holder.tvName.text = person.name
         holder.tvBirthday.text = person.birthday.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
-        holder.tvHeight.text = person.height.toString()
+        holder.tvHeight.text = "${ person.height } cm"
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
