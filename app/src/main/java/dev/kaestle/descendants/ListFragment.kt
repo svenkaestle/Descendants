@@ -35,7 +35,7 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding.rvPersons) {
-            val listAdapter = ListAdapter(sharedViewModel.persons.value?.sorted() ?: listOf())
+            val listAdapter = ListAdapter(sharedViewModel.persons.value ?: listOf())
             listAdapter.onItemClick = { personIndex ->
                 // navigate to the details fragment and pass the index of the clicked person
                 val action = ListFragmentDirections.actionListFragmentToDetailsFragment(personIndex)

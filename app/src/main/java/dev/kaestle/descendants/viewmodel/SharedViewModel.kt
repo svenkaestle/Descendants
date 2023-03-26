@@ -19,7 +19,7 @@ class SharedViewModel : ViewModel() {
      * @param name The name of the new person
      * @param type The type of the new person
      */
-    fun addPerson(birthday: LocalDate, height: Int, name: String, type: PersonType) {
+    fun addPerson(birthday: LocalDate, height: Int, name: String, type: PersonType, children: List<Person>? = listOf(), parents: List<Person>? = listOf()) {
         var newPerson: Person
         when(type) {
             PersonType.CHILD -> {
@@ -27,7 +27,7 @@ class SharedViewModel : ViewModel() {
                     birthday = birthday,
                     height = height,
                     name = name,
-                    parents = listOf()
+                    parents = parents as List<Parent>
                 )
             }
             PersonType.PARENT -> {
@@ -35,8 +35,8 @@ class SharedViewModel : ViewModel() {
                     birthday = birthday,
                     height = height,
                     name = name,
-                    parents = listOf(),
-                    children = listOf()
+                    parents = parents as List<Grandparent>,
+                    children = children as List<Child>
                 )
             }
             PersonType.GRANDPARENT -> {
@@ -44,12 +44,12 @@ class SharedViewModel : ViewModel() {
                     birthday = birthday,
                     height = height,
                     name = name,
-                    children = listOf()
+                    children = children as List<Parent>
                 )
             }
         }
 
-        _persons.value = _persons.value?.plus(newPerson) ?: listOf(newPerson)
+        _persons.value = _persons.value?.plus(newPerson)?.sorted() ?: listOf(newPerson)
     }
 
     /**
