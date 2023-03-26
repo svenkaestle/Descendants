@@ -11,8 +11,9 @@
     <string name="til_height_hint">Height</string>
     <string name="til_height_suffix">cm</string>
     <string name="til_type_hint">Type</string>
-    <string name="til_children_hint">Children</string>
-    <string name="til_parents_hint">Parents</string>
+    <string name="children_hint">Children</string>
+    <string name="parents_hint">Parents</string>
+    <string name="grandparents_hint">Grandparents</string>
     <string name="btn_save">Save</string>
     <string name="btn_delete">Delete</string>
 

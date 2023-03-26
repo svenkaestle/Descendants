@@ -45,7 +45,7 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val typeAdapter = ArrayAdapter(requireContext(), R.layout.select_item, PersonType.values().map { type -> type.value })
+        val typeAdapter = ArrayAdapter(requireContext(), R.layout.simple_string_item, PersonType.values().map { type -> type.value })
         binding.actvType.apply {
             setAdapter(typeAdapter)
             addTextChangedListener(object : TextWatcher {
@@ -177,7 +177,7 @@ class AddFragment : Fragment() {
 
         // get the filtered children/parents and reset the adapters
         val filteredChildren = getChildren(personType)
-        val childrenAdapter = ArrayAdapter(requireContext(), R.layout.select_item, filteredChildren.map { child ->  child.name})
+        val childrenAdapter = ArrayAdapter(requireContext(), R.layout.simple_string_item, filteredChildren.map { child ->  child.name})
         binding.mactvChildren.apply {
             setAdapter(childrenAdapter)
             threshold = 1
@@ -185,7 +185,7 @@ class AddFragment : Fragment() {
         }
 
         val filteredParents = getParents(personType)
-        val parentsAdapter = ArrayAdapter(requireContext(), R.layout.select_item, filteredParents.map { parent -> parent.name })
+        val parentsAdapter = ArrayAdapter(requireContext(), R.layout.simple_string_item, filteredParents.map { parent -> parent.name })
         binding.mactvParents.apply {
             setAdapter(parentsAdapter)
             threshold = 1

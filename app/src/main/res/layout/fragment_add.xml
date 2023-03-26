@@ -116,7 +116,7 @@
             android:visibility="gone"
             android:clickable="true"
 
-            android:hint="@string/til_parents_hint"
+            android:hint="@string/parents_hint"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +141,7 @@
             android:visibility="gone"
             android:clickable="true"
 
-            android:hint="@string/til_children_hint"
+            android:hint="@string/children_hint"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

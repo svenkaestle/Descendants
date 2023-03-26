@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import dev.kaestle.descendants.adapter.ListWithHeaderAdapter
 import dev.kaestle.descendants.databinding.FragmentDetailsBinding
+import dev.kaestle.descendants.model.Grandparent
+import dev.kaestle.descendants.model.Parent
 import dev.kaestle.descendants.model.Person
-import dev.kaestle.descendants.utils.Utils
 import dev.kaestle.descendants.viewmodel.SharedViewModel
 
 /**
@@ -48,7 +51,30 @@ class DetailsFragment : Fragment() {
                 suffixText = if (it.getCurrentAgeInYears() == 1) getString(R.string.year) else getString(R.string.years)
             }
             binding.tilHeight.editText?.setText(it.height.toString())
-            binding.tilType.editText?.setText(Utils.getPersonType(it).value)
+        }
+
+        with(binding.rvChildren) {
+            var childrenWithHeaders = listOf<Any>()
+            // add a 'Children' header and all children to the list if the person is a parent
+            if (currentPerson is Parent && (currentPerson as Parent).children.isNotEmpty()) {
+                childrenWithHeaders = childrenWithHeaders.plus(getString(R.string.children_hint))
+                childrenWithHeaders = childrenWithHeaders.plus((currentPerson as Parent).children)
+            }
+            // add a 'Children' and a 'Grandchildren' header and all (grand-)children to the list if the person is a grandparent
+            else if (currentPerson is Grandparent && (currentPerson as Grandparent).children.isNotEmpty()) {
+                childrenWithHeaders = childrenWithHeaders.plus(getString(R.string.children_hint))
+                childrenWithHeaders = childrenWithHeaders.plus((currentPerson as Grandparent).children)
+                // only add grandchildren if there are any and build a flat distinct list
+                val grandchildren = (currentPerson as Grandparent).children.flatMap { it.children }.distinct()
+                if (grandchildren.isNotEmpty()) {
+                    childrenWithHeaders = childrenWithHeaders.plus(getString(R.string.grandparents_hint))
+                    childrenWithHeaders = childrenWithHeaders.plus(grandchildren)
+                }
+            }
+            val listAdapter = ListWithHeaderAdapter(childrenWithHeaders)
+
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = listAdapter
         }
 
         binding.btnDelete.setOnClickListener {
@@ -62,6 +88,9 @@ class DetailsFragment : Fragment() {
         _binding = null
     }
 
+    /**
+     * Calls the view model to delete the current person
+     */
     private fun deletePerson() {
         // delete the current person if there is one
         currentPerson?.let {
