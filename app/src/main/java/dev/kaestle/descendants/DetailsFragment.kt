@@ -72,7 +72,7 @@ class DetailsFragment : Fragment() {
                 // only add grandchildren if there are any and build a flat distinct list
                 val grandchildren = (currentPerson as Grandparent).children.flatMap { it.children }.distinct()
                 if (grandchildren.isNotEmpty()) {
-                    childrenWithHeaders = childrenWithHeaders.plus(getString(R.string.grandparents_hint))
+                    childrenWithHeaders = childrenWithHeaders.plus(getString(R.string.grandchildren_hint))
                     childrenWithHeaders = childrenWithHeaders.plus(grandchildren)
                 }
             }

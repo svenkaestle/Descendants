@@ -12,6 +12,7 @@
     <string name="til_height_suffix">cm</string>
     <string name="til_type_hint">Type</string>
     <string name="children_hint">Children</string>
+    <string name="grandchildren_hint">Grandchildren</string>
     <string name="parents_hint">Parents</string>
     <string name="grandparents_hint">Grandparents</string>
     <string name="btn_save">Save</string>
