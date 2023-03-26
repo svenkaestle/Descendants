@@ -210,7 +210,7 @@ class AddFragment : Fragment() {
                 editText?.apply {
                     text = null
                     setOnClickListener {
-                        getMultiChoiceAlertDialog(filteredChildren, getString(R.string.dialog_title_select_parents)) { persons ->
+                        getMultiChoiceAlertDialog(filteredParents, getString(R.string.dialog_title_select_parents)) { persons ->
                             currentParents = persons
                             this.setText(persons.joinToString { it.name })
                         }

@@ -5,17 +5,19 @@ import java.time.LocalDate
 /**
  * This class represents a Grandparent
  *
+ * @param id The unique id of the grandparent
  * @param birthday The birthday of the grandparent
  * @param height The height of the grandparent
  * @param name The name of the grandparent
  * @param children A list of the grandparent's children, represented as [Parent]s
  */
 class Grandparent(
+    id: String,
     birthday: LocalDate,
     height: Int,
     name: String,
-    val children: List<Parent>
-) : Person(birthday, height, name) {
+    var children: List<Parent>
+) : Person(id, birthday, height, name) {
     /**
      * Prints the children of this grandparent to the console
      */

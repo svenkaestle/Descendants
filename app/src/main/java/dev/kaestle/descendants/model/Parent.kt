@@ -5,6 +5,7 @@ import java.time.LocalDate
 /**
  * This class represents a Parent
  *
+ * @param id The unique id of the parent
  * @param birthday The birthday of the parent
  * @param height The height of the parent
  * @param name The name of the parent
@@ -12,12 +13,13 @@ import java.time.LocalDate
  * @param children A list of the parent's children, represented as [Child]ren
  */
 class Parent(
+    id: String,
     birthday: LocalDate,
     height: Int,
     name: String,
-    val parents: List<Grandparent>,
-    val children: List<Child>
-) : Person(birthday, height, name) {
+    var parents: List<Grandparent>,
+    var children: List<Child>
+) : Person(id, birthday, height, name) {
     /**
      * Prints the parents of this parent to the console
      */

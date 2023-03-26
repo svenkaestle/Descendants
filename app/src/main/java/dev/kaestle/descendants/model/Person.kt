@@ -8,11 +8,13 @@ import java.time.format.DateTimeFormatter
 /**
  * This abstract class represents a base Person
  *
+ * @param id The unique id of the person
  * @param birthday The birthday of the person
  * @param height The height of the person
  * @param name The name of the person
  */
 abstract class Person (
+    val id: String,
     val birthday: LocalDate,
     val height: Int,
     val name: String
