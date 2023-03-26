@@ -1,11 +1,13 @@
 package dev.kaestle.descendants.model
 
+import android.net.Uri
 import java.time.LocalDate
 
 /**
  * This class represents a Child
  *
  * @param id The unique id of the child
+ * @param imageUri The uri to the image of the child
  * @param birthday The birthday of the child
  * @param height The height of the child
  * @param name The name of the child
@@ -13,11 +15,12 @@ import java.time.LocalDate
  */
 class Child(
     id: String,
+    imageUri: Uri? = null,
     birthday: LocalDate,
     height: Int,
     name: String,
     var parents: List<Parent>
-) : Person(id, birthday, height, name) {
+) : Person(id, imageUri, birthday, height, name) {
     /**
      * Prints the parents of this child to the console
      */

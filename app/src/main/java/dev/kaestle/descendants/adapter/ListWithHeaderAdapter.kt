@@ -34,7 +34,11 @@ class ListWithHeaderAdapter(private val personsWithHeaders: List<Any>) : Recycle
         if (holder is PersonViewHolder) {
             val person: Person = personsWithHeaders[position] as Person
 
-            holder.ivAvatar.setImageResource(R.drawable.default_avatar)
+            if (person.imageUri != null) {
+                holder.sivAvatar.setImageURI(person.imageUri)
+            } else {
+                holder.sivAvatar.setImageResource(R.drawable.default_avatar)
+            }
             holder.tvName.text = person.name
             holder.tvBirthday.text = person.birthday.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
             holder.tvHeight.text = "${ person.height } cm"
@@ -47,7 +51,7 @@ class ListWithHeaderAdapter(private val personsWithHeaders: List<Any>) : Recycle
     }
 
     inner class PersonViewHolder(itemView: View) : ViewHolder(itemView) {
-        val ivAvatar: ShapeableImageView = itemView.findViewById(R.id.siv_avatar)
+        val sivAvatar: ShapeableImageView = itemView.findViewById(R.id.siv_avatar)
         val tvName: TextView = itemView.findViewById(R.id.tv_name)
         val tvBirthday: TextView = itemView.findViewById(R.id.tv_birthday)
         val tvHeight: TextView = itemView.findViewById(R.id.tv_height)

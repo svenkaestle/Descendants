@@ -25,14 +25,18 @@ class ListAdapter(private val persons: List<Person>) : RecyclerView.Adapter<List
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val person: Person = persons[position]
 
-        holder.ivAvatar.setImageResource(R.drawable.default_avatar)
+        if (person.imageUri != null) {
+            holder.sivAvatar.setImageURI(person.imageUri)
+        } else {
+            holder.sivAvatar.setImageResource(R.drawable.default_avatar)
+        }
         holder.tvName.text = person.name
         holder.tvBirthday.text = person.birthday.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
         holder.tvHeight.text = "${ person.height } cm"
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivAvatar: ShapeableImageView = itemView.findViewById(R.id.siv_avatar)
+        val sivAvatar: ShapeableImageView = itemView.findViewById(R.id.siv_avatar)
         val tvName: TextView = itemView.findViewById(R.id.tv_name)
         val tvBirthday: TextView = itemView.findViewById(R.id.tv_birthday)
         val tvHeight: TextView = itemView.findViewById(R.id.tv_height)

@@ -2,6 +2,7 @@ package dev.kaestle.descendants
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+
 /**
  * The [Fragment] to add a new person.
  */
@@ -30,7 +33,13 @@ class AddFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        // set the uri of the selected image as source for the image view
+        binding.sivAvatar.setImageURI(uri)
+        currentImageUri = uri
+    }
 
+    private var currentImageUri: Uri? = null
     private var currentParents: List<Person> = listOf()
     private var currentChildren: List<Person> = listOf()
 
@@ -39,6 +48,11 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
+
+        binding.sivAvatar.setOnClickListener {
+            getContent.launch("image/*")
+        }
+
         return binding.root
     }
 
@@ -121,7 +135,8 @@ class AddFragment : Fragment() {
             name = name,
             type = PersonType.valueOf(type.uppercase()),
             children = currentChildren,
-            parents = currentParents
+            parents = currentParents,
+            imageUri = currentImageUri
         )
         findNavController().navigate(R.id.action_addFragment_to_ListFragment)
     }

@@ -1,5 +1,6 @@
 package dev.kaestle.descendants.model
 
+import android.net.Uri
 import android.util.Log
 import java.time.LocalDate
 import java.time.Period
@@ -9,12 +10,14 @@ import java.time.format.DateTimeFormatter
  * This abstract class represents a base Person
  *
  * @param id The unique id of the person
+ * @param imageUri The uri to the image of the person
  * @param birthday The birthday of the person
  * @param height The height of the person
  * @param name The name of the person
  */
 abstract class Person (
     val id: String,
+    val imageUri: Uri? = null,
     val birthday: LocalDate,
     val height: Int,
     val name: String

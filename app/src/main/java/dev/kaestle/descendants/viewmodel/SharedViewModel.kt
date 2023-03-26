@@ -1,5 +1,6 @@
 package dev.kaestle.descendants.viewmodel
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,12 +21,13 @@ class SharedViewModel : ViewModel() {
      * @param name The name of the new person
      * @param type The type of the new person
      */
-    fun addPerson(birthday: LocalDate, height: Int, name: String, type: PersonType, children: List<Person>? = listOf(), parents: List<Person>? = listOf()) {
+    fun addPerson(birthday: LocalDate, height: Int, name: String, type: PersonType, children: List<Person>? = listOf(), parents: List<Person>? = listOf(), imageUri: Uri? = null) {
         var newPerson: Person
         when(type) {
             PersonType.CHILD -> {
                 newPerson = Child(
                     id = getUUID(),
+                    imageUri = imageUri,
                     birthday = birthday,
                     height = height,
                     name = name,
@@ -43,6 +45,7 @@ class SharedViewModel : ViewModel() {
             PersonType.PARENT -> {
                 newPerson = Parent(
                     id = getUUID(),
+                    imageUri = imageUri,
                     birthday = birthday,
                     height = height,
                     name = name,
@@ -69,6 +72,7 @@ class SharedViewModel : ViewModel() {
             PersonType.GRANDPARENT -> {
                 newPerson = Grandparent(
                     id = getUUID(),
+                    imageUri = imageUri,
                     birthday = birthday,
                     height = height,
                     name = name,

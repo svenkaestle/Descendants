@@ -12,6 +12,7 @@
         android:layout_height="@dimen/avatar_size_small"
 
         android:src="@drawable/default_avatar"
+        android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/roundedImageView"
 
         app:layout_constraintStart_toStartOf="parent"

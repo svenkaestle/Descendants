@@ -45,6 +45,11 @@ class DetailsFragment : Fragment() {
 
         // fill the details form if the current person is not null
         currentPerson?.let {
+            if (it.imageUri != null) {
+                binding.sivAvatar.setImageURI(it.imageUri)
+            } else {
+                binding.sivAvatar.setImageResource(R.drawable.default_avatar)
+            }
             binding.tilName.editText?.setText(it.name)
             binding.tilAge.apply {
                 editText?.setText(it.getCurrentAgeInYears().toString())
