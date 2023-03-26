@@ -10,14 +10,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_avatar"
+            android:layout_width="@dimen/avatar_size_xxlarge"
+            android:layout_height="@dimen/avatar_size_xxlarge"
 
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/default_avatar"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,7 @@
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_avatar">
+            app:layout_constraintTop_toBottomOf="@id/siv_avatar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
